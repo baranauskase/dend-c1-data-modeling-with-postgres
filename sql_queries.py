@@ -11,41 +11,41 @@ time_table_drop = "DROP TABLE IF EXISTS time;"
 songplay_table_create = ("""
 CREATE TABLE songplays (
     songplay_id VARCHAR PRIMARY KEY,
-    start_time TIMESTAMP,
-    user_id VARCHAR,
-    level VARCHAR,
+    start_time TIMESTAMP NOT NULL,
+    user_id VARCHAR NOT NULL,
+    level VARCHAR NOT NULL,
     song_id VARCHAR,
     artist_id VARCHAR,
-    session_id VARCHAR,
-    location VARCHAR,
-    user_agent VARCHAR
+    session_id VARCHAR NOT NULL,
+    location VARCHAR NOT NULL,
+    user_agent VARCHAR NOT NULL
 );
 """)
 
 user_table_create = ("""
 CREATE TABLE users (
     user_id VARCHAR PRIMARY KEY,
-    first_name VARCHAR,
-    last_name VARCHAR,
-    gender VARCHAR,
-    level VARCHAR
+    first_name VARCHAR NOT NULL,
+    last_name VARCHAR NOT NULL,
+    gender VARCHAR NOT NULL,
+    level VARCHAR NOT NULL
 );
 """)
 
 song_table_create = ("""
 CREATE TABLE songs (
     song_id VARCHAR PRIMARY KEY,
-    title VARCHAR,
-    artist_id VARCHAR,
-    year INT,
-    duration DECIMAL
+    title VARCHAR NOT NULL,
+    artist_id VARCHAR NOT NULL,
+    year INT NOT NULL,
+    duration DECIMAL NOT NULL
 );
 """)
 
 artist_table_create = ("""
 CREATE TABLE artists (
     artist_id VARCHAR PRIMARY KEY,
-    name VARCHAR,
+    name VARCHAR NOT NULL,
     location VARCHAR,
     latitude DECIMAL,
     longitude DECIMAL
@@ -55,12 +55,12 @@ CREATE TABLE artists (
 time_table_create = ("""
 CREATE TABLE time (
     start_time TIMESTAMP PRIMARY KEY,
-    hour INT,
-    day INT,
-    week INT,
-    month INT,
-    year INT,
-    weekday INT
+    hour INT NOT NULL,
+    day INT NOT NULL,
+    week INT NOT NULL,
+    month INT NOT NULL,
+    year INT NOT NULL,
+    weekday INT NOT NULL
 )
 """)
 
