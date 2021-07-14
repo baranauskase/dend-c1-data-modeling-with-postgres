@@ -18,3 +18,30 @@ build an ETL pipeline using Python. To complete the project, I will need to
 define fact and dimension tables for a star schema for a particular analytic 
 focus, and write an ETL pipeline that transfers data from files in two local 
 directories into these tables in Postgres using Python and SQL.
+
+# Setting up development environment
+This project can be implemented on a local machine using Python3 and Docker. The 
+instructions here assume that VS Code is used as a development environment,
+especially the way `ipython` kernel is setup instead of using `jupyter notebook`.
+It is good practice not to contaminate your global Python installation by
+installing dependencies that are specific to this project. The first step 
+therefore is to create a virtual Python environment. We will utilise the most
+basic approach by creating an environment using `venv` module. At the root of 
+the project run the following commands:
+
+```
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+ipython kernel install --user --name=dend-c1-data-modeling-with-postgres
+```
+
+Now that the virtual environment is ready. The next step is spin a `PostgresSQL`
+server. The cleanest way is to run an official `Docker` container and you can do
+so by deploying the stack.
+
+```
+docker stack deploy -c postgres-stack.yml postgres
+```
+If your `Docker` engine is not running in `swarm` mode then it is also possible
+use `docker-compose` to deploy this stack.
