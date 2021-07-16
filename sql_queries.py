@@ -103,7 +103,8 @@ INSERT INTO users (
     %s,
     %s,
     %s
-) ON CONFLICT DO NOTHING;
+) ON CONFLICT ON CONSTRAINT users_pkey DO 
+    UPDATE SET level = EXCLUDED.level;
 """)
 
 song_table_insert = ("""
